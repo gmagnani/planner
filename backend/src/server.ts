@@ -5,7 +5,6 @@ import {
   serializerCompiler,
   validatorCompiler,
 } from 'fastify-type-provider-zod'
-import { confirmTrip } from './routes/confirm-trip'
 import { confirmParticipants } from './routes/confirm-participant'
 import { createActivity } from './routes/create-activity'
 import { getActivities } from './routes/get-activities'
@@ -31,7 +30,6 @@ app.setSerializerCompiler(serializerCompiler)
 app.setErrorHandler(errorHandler)
 
 app.register(createTrip)
-app.register(confirmTrip)
 app.register(confirmParticipants)
 app.register(createActivity)
 app.register(getActivities)
