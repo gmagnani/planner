@@ -18,6 +18,7 @@ import { getParticipant } from './routes/get-participant'
 import { errorHandler } from './error-handler'
 import { env } from './env'
 import { deleteInvite } from './routes/delete-participant'
+import { deleteLink } from './routes/delete-link'
 
 const app = fastify()
 app.register(cors, {
@@ -41,6 +42,7 @@ app.register(updateTrip)
 app.register(getTripDetails)
 app.register(getParticipant)
 app.register(deleteInvite)
+app.register(deleteLink)
 
 app.listen({ port: env.PORT }).then(() => {
   console.log('Server running!')
