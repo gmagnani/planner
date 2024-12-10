@@ -6,6 +6,8 @@ import { Guests } from "./guests";
 import { Activities } from "./activities";
 import { DestinationAndDateHeader } from "./destination-and-date-header";
 import { Button } from "../../components/button";
+import { ToastContainer } from "react-toastify";
+
 
 export function TripDetailsPage() {
     const [isCreateActivityModalOpen, setIsCreateActivityModalOpen] = useState(false)
@@ -50,6 +52,7 @@ export function TripDetailsPage() {
                     closeCreateActiviyModal={closeCreateActiviyModal}
                 />
             )}
+            <ToastContainer />
         </div>
     )
 }
