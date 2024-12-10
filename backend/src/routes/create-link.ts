@@ -38,7 +38,18 @@ export async function createLink(app: FastifyInstance) {
         }
       })
 
-      return { linkId: link.id }
+      const links = await prisma.link.findMany({
+        where: {
+          trip_id: tripId,
+        },
+        select: {
+          id: true,
+          title: true,
+          url: true,
+        },
+      })
+
+      return { linkId: link.id, links }
     },
   )
 }
