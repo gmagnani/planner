@@ -1,4 +1,4 @@
-import { Link2, Plus, X } from "lucide-react";
+import { Link2, Plus, X, Trash } from "lucide-react";
 import { Button } from "../../components/button";
 import { useEffect, useState } from "react";
 import { api } from "../../lib/axios";
@@ -44,6 +44,15 @@ export function ImportantLinks() {
             })
         })
     }
+
+    function deleteLink(linkId: string) {
+        api.delete(`/trips/${tripId}/links/${linkId}`).then(response => {
+            setLinks(response.data.links)
+            toast.success('Link deletado com sucesso',{
+                theme: 'colored'
+            })
+        })
+    }
     return (
         <div className="space-y-6">
             <h2 className="text-xl font-semibold">Links Importantes</h2>
@@ -55,7 +64,10 @@ export function ImportantLinks() {
                                 <span className="block font-medium text-zinc-100">{link.title}</span>
                                 <a href={link.url} className="block text-xs text-zinc-400 truncate hover:text-zinc-200">{link.url}</a>
                             </div>
-                            <Link2 className="text-zinc-400 size-5 shrink-0" />
+                            <div className="flex gap-2">
+                                <Link2 className="text-zinc-400 size-5 shrink-0" />
+                                <Trash className='text-red-600 size-5 cursor-pointer' onClick={() => deleteLink(link.id)}/>
+                            </div>
                         </div>
                     ))
                 }

@@ -112,7 +112,12 @@ export function Guests() {
                                                 ):(
                                                     <CircleDashed className="text-zinc-400 size-5 shrink-0" />
                                                 )}
-                                                <Trash className='text-red-600 size-5 cursor-pointer' onClick={() => removeParticipant(participant.id)}/>
+                                                {
+                                                    !participant.is_confirmed && (
+                                                        <Trash className='text-red-600 size-5 cursor-pointer' onClick={() => removeParticipant(participant.id)}/>
+                                                    )
+                                                }
+                                                
                                             </div>
                                         </div>
                                     )
