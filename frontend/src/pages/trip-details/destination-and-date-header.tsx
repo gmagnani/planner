@@ -51,10 +51,8 @@ export function DestinationAndDateHeader() {
             starts_at: eventStartAndEndDates?.from,
             ends_at: eventStartAndEndDates?.to
         }).then(response => {
-            toast.success('Viagem alterada com sucesso!',{
-                theme: 'colored'
-            })
             setIsDatePickerOpen(false)
+            window.location.reload()
         })
     }
 
